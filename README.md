@@ -1,3 +1,5 @@
+**Note:** add "index.html" to the end of the url if you are seeing this.
+
 **Chrome Web Store desc:**
 
 Stay productive and focused with a clean, all-in-one new tab experience. This extension transforms your Chrome new tab into a minimal productivity hub — combining a Pomodoro timer, to-do list, and quick access to your favorite sites in one elegant interface.
