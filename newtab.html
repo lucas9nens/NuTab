@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/images/nutab-16.png">
+
+</head>
+<body>
+
+
+    <div class="overlay-blur" id="settings" hidden> <!-- add "hidden" back into this once you're done-->
+            <div class="settings-box">
+                <strong class="heading">Settings</strong>
+                <p class="secondary-text">Manage your settings and preferences.</p>
+                <hr>
+                <br/>
+                
+                <strong>Background</strong>
+                <p class="secondary-text">Upload a custom background.</p>
+                <div class="vision-board">
+                    <div class="vision-board-upload">
+                        <label class="slot" id="slot1">
+                                <input type="file" accepts="image/*" id="vision-1" hidden>
+                                +
+                                <div class="image-container">
+                                    <img src="" height="60px" id="vision-1-img">
+                                </div>
+                        </label>
+                    </div>
+                    
+                </div>
+                <br/>
+                <label for="range4" class="form-label secondary-text" style="font-size: 1rem;">Background Darkness %: <output for="range4" id="rangeValue" aria-hidden="true" style="color: var(--selected-color); font-weight: bold;"></output>
+                </label>
+                <input type="range" class="form-range mode-dark" data-bs-theme="dark" min="0" max="100" value="50" id="range4">
+                <br/>
+                <br/>
+                <hr>
+                <br/>
+                <strong>My Sites</strong>
+                <p class="secondary-text">Add your most essential sites to your interface.</p>
+                <form class="row gy-2 gx-3 align-items-center site-form">
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="site-name">Site Name</label>
+                        <input type="text" class="form-control" id="site-name" placeholder="Site Name">
+                    </div>
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="site-address">Site Address</label>
+                        <input type="text" class="form-control" id="site-address" placeholder="www.site-address.com">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary" id="add-site">Add +</button>
+                    </div>
+                </form>
+                    <div class="site-list" id="site-list-container">
+                        <!-- Added site list goes here -->
+                    </div>
+                    <i class="settings-exit fa fa-remove"></i>
+                </div>
+
+            </div>
+
+    <div class="master-container">
+        <div class="row">
+            <div class="col" style="text-align: left;">
+
+                <div style="font-weight: bold;">
+                    <div style="display: flex;">
+                        <p>My Sites</p>
+                    </div>
+                    <ul id="bookmarks" class="weblinks">
+                        <!---<li><a href="#">Gmail</a></li>
+                        <li><a href="#">Canvas</a></li>
+                        <li><a href="#">Calendar</a></li>-->
+                    </ul>
+                </div>
+                
+            </div>
+            <div class="col d-flex flex-column align-items-end widget-panel">
+                
+                <!-- Tasks -->
+                <div class="widget" style="padding: 25px;">
+                    <div class="widget-container" style="width: fit-content;">
+                        <strong>To-Do list</strong>
+                            <ul id="task-collection" style="padding: 0;">
+                                <!--<li class="task">
+                                    <span class="check-circle"></span>
+                                    <input type="text" class="task-text" value="Buy groceries">
+                                </li>-->
+                            </ul>
+                            <li class="task">
+                                <span class="check-circle"></span>
+                                <input type="text" class="task-text" id="input-box" placeholder="New Task" autocomplete="off">
+                            </li>
+                    </div>  
+                </div>
+
+                <!-- Pomodoro -->
+                <div class="widget" style="padding: 12px 25px 25px 25px; text-align: center;">
+                    <div class="widget-container" style="width: 100%;">
+                        <div style="display: flex; justify-content: space-around; width: 100%;">
+                            <strong id="focus">Focus</strong>
+                            <strong id="break">Break</strong>
+                            <strong id="rest">Rest</strong>
+                        </div>
+                        <hr style="margin: 12px -25px 0 -25px; border: none; border-top: 1px solid rgb(153, 153, 153, 30%);">
+                    </div>
+                    <strong style="font-size: 5em; display: block; padding: 10px 20px 10px 20px;" id="timer-display">25:00</strong>
+                    <div style="display: flex; justify-content: center; gap: 20px;">
+                        <button class="pomobutton main" id="controls">Start</button>
+                        <button class="pomobutton secondary" id="reset">Reset</button>
+                    </div>
+                </div>
+
+                <!-- Productivity Tracker -->
+                 <div class="widget" style="display: flex; padding: 20px 25px 20px 25px; align-items: center; gap: 10px;">
+                    <strong>Daily Task Streak</strong>
+                    <div style="margin-left: 42px;" class="tracker-tile" id="d0"></div>
+                    <div class="tracker-tile" id="d1"></div>
+                    <div class="tracker-tile" id="d2"></div>
+                    <div class="tracker-tile" id="d3"></div>
+                    <div class="tracker-tile" id="d4"></div>
+                    <div class="tracker-tile" id="d5"></div>
+                    <div class="tracker-tile" id="d6"></div>
+                 </div>
+
+            </div>
+        </div>
+        <button class="mini-button"><i class="fa fa-gear"></i></button>
+
+        <!-- Search Bar -->
+        <div class="browser-search">
+            <form method="GET" action="https://www.google.com/search" autocomplete="off">
+                <img class="search-engine-icon" src="images/google-white-icon.png"/>
+                <input style="position: relative; left: 40px; border: none; background: transparent; outline: none; width: 90%;" type="text" name="q" placeholder="Search Google..."/>
+            </form>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" style="filter: invert(1);" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this marked day?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" style="background-color: var(--delete-color); border: none;" data-bs-dismiss="modal" id="modalDelete">Delete</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
+</div>
+
+    <div class="background">
+    </div>
+    
+<script src="script.js"></script>
+<script src="pomo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

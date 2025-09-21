@@ -1,0 +1,17 @@
+{
+  "name": "NuTab",
+  "description": "Replaces the default Chrome new tab page with a sleek, custom dashboard.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "images/nutab-16.png",
+    "48": "images/nutab-48.png",
+    "128": "images/nutab-128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "permissions": [
+    "storage"
+  ]
+}
